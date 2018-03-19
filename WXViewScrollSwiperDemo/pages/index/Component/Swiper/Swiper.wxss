@@ -1,0 +1,6 @@
+/**Swiper.wxss**/
+/**更多源码请于51小程序源码版块下载：http://bbs.html51.com/f-36-1/**/
+.swiper-item{
+  display: block;
+  height: 150px;
+}

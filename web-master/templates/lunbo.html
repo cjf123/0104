@@ -1,0 +1,98 @@
+  <style>
+
+       .img li a{
+           position: absolute;
+           top: 0;
+           left: 0;
+           margin-left: 840px;
+           margin-top: 50px;
+
+        }
+       .outer img{
+           width: 290px;
+           height: 480px;;
+       }
+
+       ul li{
+            list-style: none;
+        }
+       .num {
+            position: absolute;
+            bottom: 30px;
+            text-align: center;
+            width: 100%;
+        }
+      .num li{
+            display: inline-block;
+            height: 18px;
+            width: 18px;
+            background-color: #888888;
+            color: white;
+            text-align: center;
+            line-height: 18px;
+            border-radius: 50%;
+            margin-left: 5px;
+        }
+
+    </style>
+
+<div class="outer">
+    <ul class="img" id="img">
+        <li><a><img src="/static/images/123.jpg"></a></li>
+        <li><a><img src="/static/images/124.jpg"></a></li>
+        <li><a><img src="/static/images/125.jpg"></a></li>
+        <li><a><img src="/static/images/126.jpg"></a></li>
+    </ul>
+
+    <ul class="num">
+        <li class="active">1</li>
+        <li>2</li>
+        <li>3</li>
+        <li>4</li>
+    </ul>
+
+</div>
+
+  <script>
+
+
+        //自动轮播
+        var time=setInterval(move,3000);//每隔1.5秒执行一次move函数
+
+        var i=0;
+        function move() {
+            if (i==3){
+                i=-1
+            }
+            i++;
+            $(".img li").eq(i).fadeIn(1000).siblings().fadeOut(1000);
+            $(".num li").eq(i).stop().addClass("active").siblings().stop().removeClass("active")
+        }
+
+        //向左轮播
+        function moveL() {
+         if(i==0){
+            i=4;
+            }
+            i--;
+            $(".num li").eq(i).addClass("active").siblings().removeClass("active");
+            $(".img li").eq(i).stop().fadeIn(1000).siblings().stop().fadeOut(1000);
+        }
+
+        $(".outer").hover(function () { //hove第一个参数相当于mouseover,第二个相当于mouseout
+            $(this).css("cursor","pointer");
+            clearInterval(time)
+        },function () {
+            time=setInterval(move,1500)
+        });
+
+        $(".right_btn").click(function () {
+            move()
+        });
+
+        $(".left_btn").click(function () {
+            moveL()
+        })
+
+
+    </script>

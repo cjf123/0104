@@ -1,0 +1,118 @@
+ <div class="left_content" style="width: 630px;">
+    <!--<div class="photo">-->
+{#    <img src="/static/images/news.jpg" class="photo">#}
+     <!--</div>-->
+
+    <div class="main_information">
+        <a href="javascript:void(0)" class="information" >
+        {{ i.title }}
+        </a>
+        <a class="nid hide">{{ i.id }}</a>
+        <span class="net_url">www.baidu.com</span>
+        <a href="javascript:void(0)" class="sources">{{ i.get_nt_display }}</a>
+    </div>
+    <div class="main_link">
+
+        <a href="javascript:void(0)" class="thumb_up" id="thumb_True" style="position: relative;">
+            <!--点赞-->
+            <span class="link_icon T"></span>
+            <b>{{ i.favor_count }}</b>
+        </a>
+        <a href="javascript:void(0)" class="comments" id="comment comment_True">
+             <!--评论-->
+            <span class="link_icon C"></span>
+            <b>{{ i.comment_count }}</b>
+        </a>
+        <a href="javascript:void(0)" class="collection" id="coll_True">
+            <span class="link_icon CO"></span>
+            <b>收藏</b>
+        </a>
+
+        <a href="javascript:void(0)" class="collection">
+            <img src="/static/images/13.png" class="icon" >
+            <b>{{ i.user.username }}</b>
+            <b id="user_id" class="hide">{{ i.user_id}}</b>
+        </a>
+        <span class="time_into">
+            <a href="javascript:void(0)" class="time_go">{{ i.ctime|timesince }}前</a>
+            <i>入热榜</i>
+
+        </span>
+
+
+    </div>
+
+<!--评论框显示内容-->
+    <div class="comments_content hide">
+        <div class="comments_content_top pinglun"></div>
+        <a class="pinglun close-btn" title="关闭" href="javascript:;" ></a>
+        <div class="comment-box">
+            <div class="loading-ico loading-ico-top" style="margin-left: 230px; display: none;">
+                加载中，请稍候...
+            </div>
+            <div class="comment_title_box">
+                <div class="comment_hot">
+                    最新评论
+                    (<span>{{ i.comment_count }}</span>)
+
+                </div>
+                <div class="comment_remove">
+                    <a href="javascript:">
+                        <em class="pinglun em"></em>
+                        <span>返回评论页面</span>
+                    </a>
+                </div>
+                <ul class="comment_inner_arrow" id="comment_arrow_{{ i.id }}" style="clear: both">
+                </ul>
+                 <!--向谁评论的模块-->
+                <div class="pinglin_to_user hide">
+                    <span>回复谁：</span>
+                    <a href="javascript:void(0)"></a>
+                </div>
+                <div class="comment_huifu">
+                    <div class="huifu_inner">
+                        <textarea maxlength="150" name="huifu-inner" class="huifu_text">
+                        </textarea>
+                    </div>
+                    {% if request.session.is_login %}
+                        <div class="huifu_btn">
+                            <a class="hide fabu_partent_comment"></a>
+                            <a href="javascript:" class="fabu_btn" onclick="fabu_True(this)">
+                                评论
+                            </a>
+                            <a href="javascript:" class="fabu_ico" style="display: none">
+                                发布中
+                            </a>
+                        </div>
+                    {% else %}
+                        <div class="huifu_btn">
+
+                            <a href="javascript:" class="fabu_btn" onclick="fabu_False()">
+                                评论
+                            </a>
+                            <a href="javascript:" class="fabu_ico" style="display: none">
+                                发布中
+                            </a>
+                        </div>
+                    {% endif %}
+
+                </div>
+
+                <div class="shouqi">
+                    <a href="javascript:" class="shouqi_btn">
+                        <em class="pinglun em2"></em>
+                        <span>收起</span>
+                    </a>
+
+                </div>
+
+                <div class="button">
+                    <div class="button_inner"></div>
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+
+</div>

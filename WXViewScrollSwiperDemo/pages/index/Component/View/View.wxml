@@ -1,0 +1,25 @@
+<!--View.wxml-->
+<!--更多源码请于51小程序源码版块下载：http://bbs.html51.com/f-36-1/-->
+<view class="viewTitle">
+    <text>View展示</text>
+</view>
+<!--样式一，横向排列-->
+<view class="section">
+    <view class="section__title">样式一，横向排列</view>
+    <view class="flex-wrp">
+        <view class="flex-item bc_green">111</view>
+        <view class="flex-item bc_red">222</view>
+        <view class="flex-item bc_blue">333</view>
+    </view>
+</view>
+<!--样式二，竖向排列。下面的style="height:300px"样式，也可以在 .wxml的文件中进行样式设计-->
+<view class="section">
+    <view class="section__title">样式二，竖向排列</view>
+    <view class="flex-wrp" style="height:300px">
+<!--下面的view有2个class 一个是来之View.wxss文件定义的样式，一个是总的样式文件app.wxss定义的样式-->
+        <view class="flex-item bc_green" style="margin-top: 0px">111</view>
+        <view class="flex-item bc_red" style="margin-top: 100px">222</view>
+        <view class="flex-item bc_blue" style="margin-top: 200px">333</view>
+    </view>
+</view>
+

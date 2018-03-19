@@ -1,0 +1,74 @@
+{% extends "search.html" %}
+
+{% block css %}
+
+   <link href="/static/css/login_reg.css" rel="stylesheet" type="text/css">
+   <link href="/static/css/release.css" rel="stylesheet" type="text/css">
+    <script src="/static/js/jquery-3.1.1.js"></script>
+
+    <style>
+        .head_box_contend .login_register .user_cont li{
+            list-style: none;
+            height: 30px;
+            text-align: center;
+            line-height: 30px;
+            border-top: 1px dashed #ccdcef ;
+        }
+        .head_box_contend .login_register .user_cont li:hover{
+            background-color: #2559a4;
+            color: white;
+            cursor: pointer;
+        }
+
+        .head_box_contend .login_register .user_cont{
+            border: 1px solid #d4d4d4;
+
+        }
+        .head_box_contend .login_register .a img{
+            width: 40px;
+            height: 40px;
+            margin-top: 4px;
+            border-radius: 50%;
+        }
+    </style>
+
+{% endblock %}
+
+{% block content %}
+
+
+
+
+{% endblock %}
+
+
+
+{% block js %}
+    <script>
+
+
+        $(function () {
+             $('#login_user').removeClass('hide');
+             $('#login_register').addClass('hide');
+             bindUseroverEvent();
+             bindUserleaveEvent();
+
+        });
+    
+        function bindUseroverEvent() {
+            $(".head_box_contend .login_register .img_user").mouseover(function () {
+                $('.head_box_contend .login_register .user_cont').removeClass('hide');
+            })
+        }
+
+        function bindUserleaveEvent() {
+            $(".head_box_contend #login_user").mouseleave(function () {
+                $('.head_box_contend .login_register .user_cont').addClass('hide')
+            })
+        }
+
+
+
+    </script>
+
+{% endblock %}

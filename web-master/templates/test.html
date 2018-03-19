@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        .item{
+            height: 100px;
+            border: 1px solid rebeccapurple;
+        }
+        .zan{
+            height: 30px;
+            width: 30px;
+            background-color: #252c34;
+            color: white;
+            position: relative;
+            cursor: pointer;
+        }
+        .zan span{
+            position: absolute;
+            font-weight: bold;
+        }
+
+
+    </style>
+</head>
+<body>
+<div>
+        <div class="item">
+            <div class="zan">赞
+                <span>+1</span>
+            </div>
+        </div>
+        <div class="item">
+            <div class="zan">赞</div>
+        </div>
+        <div class="item">
+           <div class="zan">赞</div>
+        </div>
+        <div class="item">
+            <div class="zan">赞</div>
+        </div>
+    </div>
+
+    <script src="/static/js/jquery-3.1.1.js"></script>
+<script>
+    $(function () {
+        $('.zan').click(function () {
+            var fz = 12;
+            var tp = 5;
+            var lf = 5;
+            var op = 1;
+            var tag = document.createElement('span')
+            tag.innerHTML = '+1';
+            tag.style.color = 'green';
+            tag.style.fontSize = fz + 'px';
+            tag.style.top = tp + 'px';
+            tag.style.left = lf + 'px';
+            tag.style.opacity =op;
+            $(this).append(tag);
+
+            var obj = setInterval(function () {
+                fz += 5 ;
+                tp -= 5 ;
+                lf += 5 ;
+                op -= 0.1 ;
+                tag.style.color = 'green';
+                tag.style.fontSize = fz + 'px';
+                tag.style.top = tp + 'px';
+                tag.style.left = lf + 'px';
+                tag.style.opacity =op;
+                if(op<0){
+                    clearInterval(obj);
+                    $(tag).remove()
+                }
+            },100)
+        })
+    })
+
+
+
+</script>
+
+
+</body>
+</html>

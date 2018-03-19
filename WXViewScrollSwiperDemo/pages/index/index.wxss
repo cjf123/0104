@@ -1,0 +1,20 @@
+/**index.wxss**/
+/**更多源码请于51小程序源码版块下载：http://bbs.html51.com/f-36-1/**/
+.usermotto {
+  margin-top: 30px;
+  font-size: 20px;
+}
+
+.viewName{
+  margin-top: 30px;
+  margin-left: 40px;
+  margin-right: 40px;
+  height: 50px;
+  font-size: 25px;
+  background-color: #AED2EE;
+/**下面是设置三个view视图的文本内容上下左右居中**/
+  justify-content: center;
+  display: flex;
+  align-items: center;
+}
+

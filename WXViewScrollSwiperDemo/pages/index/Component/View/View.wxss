@@ -1,0 +1,19 @@
+/**View.wxss**/
+/**更多源码请于51小程序源码版块下载：http://bbs.html51.com/f-36-1/**/
+.flex-wrp{
+    height: 100px;
+    display: flex;
+    background-color: #ffffff;
+}
+/**
+这里定义了一个样式，另外在总的小程序app.wxss中也可以定义通用的样式，可以应用到每个页面中。
+**/
+.flex-item{
+    width: 100px;
+    height: 100px;
+    color: #ffffff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+

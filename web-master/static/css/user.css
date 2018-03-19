@@ -1,0 +1,44 @@
+ .outer .inner-top{
+        margin-left: 50px;
+        font-family: 微软雅黑;
+        font-size: 20px;
+    }
+    .inner-middle{
+        float: left;
+        display: inline-block;
+    }
+    .model_release_middle_head{
+        line-height: 40px;
+        height: 40px;
+        width: 630px;
+        background-color: #9acfea;
+        margin-top: 15px;
+    }
+    .model_release_middle_head ul{
+        list-style: none;
+    }
+    .model_release_middle_head .current{
+        margin-top: -1px;
+        color: #252c34;
+        background: #fff;
+        height: 40px;
+        border-top: 2px solid #0488cd;
+        z-index: 10;
+    }
+    .model_release_middle_head ul li{
+        cursor: pointer;
+        position: relative;
+        float: left;
+        font-size: 18px;
+        text-align: center;
+        font-weight: bold;
+        border-right: 1px solid #ddd;
+        padding: 0 18px;
+        line-height: 33px;
+    }
+    .inner-right{
+        float:left;
+
+    }
+
+

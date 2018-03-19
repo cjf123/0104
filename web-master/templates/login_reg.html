@@ -1,0 +1,929 @@
+{% extends "search.html" %}
+
+{% block css %}
+
+   <link href="/static/css/login_reg.css" rel="stylesheet" type="text/css">
+   <link href="/static/css/release.css" rel="stylesheet" type="text/css">
+
+    <style>
+
+    </style>
+
+{% endblock %}
+
+{% block body %}
+
+    <!--登陆模态框-->
+    <div class="model_login model_active hide" id="model_login">
+        <div class="model_top">
+            <span>登陆</span>
+            <a>x</a>
+        </div>
+        <div class="model_login_box">
+            <span id="iphone">邮箱登陆</span>|
+            <span class="active" id="user">用户名登陆</span>
+        </div>
+        <div class="iphone_model_middle">
+            <div class="err-msg" style="color: #f60;font-size: 12px;margin-left: 72px">
+
+            </div>
+
+            <div class="iphone inp">
+                <input type="text" placeholder="邮箱" name="user" id="iphone">
+            </div>
+            <div class="password inp">
+                <input type="password" placeholder="密码" name="pwd" id="pwd">
+            </div>
+            <div class="inp">
+                <input name="code" class="check-code" type="text" placeholder="请输入验证码" style="width: 117px" />
+                <span>
+                    <img class="check-img" src="/check_code/" alt="验证码" onclick="ChangeCode(this);">
+                </span>
+
+            </div>
+        </div>
+
+        <div class="user_model_middle hide">
+            <div class="iphone inp">
+                <input type="text" placeholder="用户名">
+            </div>
+            <div class="password inp">
+                <input type="password" placeholder="密码">
+            </div>
+            <div class="inp clearfix">
+                <input name="code" class="check-code" type="text" placeholder="请输入验证码" style="width: 117px" />
+                <span>
+                    <img class="check-img" src="/check_code/" alt="验证码" onclick="ChangeCode(this);">
+                </span>
+
+            </div>
+        </div>
+
+
+        <div class="model_bottom">
+             <div class="model_bottom_active">
+                <span>
+                    <input type="checkbox">
+                    一个月内自动登陆
+                </span>
+                <a>忘记密码?</a>
+            </div>
+            <div class="model_login_bottom">
+                <a id="model_login_btn" onclick="SubmitLogin(this)">登陆</a>
+            </div>
+        </div>
+
+
+    </div>
+
+
+    <!--注册模态框-->
+    <div class="model_register model_active hide" id="model_register">
+        <div class="model_register_first">
+            <div class="model_top">
+                <span>注册</span>
+                <a>x</a>
+            </div>
+
+            <div class="model_login_box">
+                <span>用户注册</span>
+
+            </div>
+            <div id="register_error_summary" class="error-msg" style="margin-left: 72px;color: red">
+
+            </div>
+
+            <div class="iphone_model_middle">
+                <div class="reg">
+                    <input type="text" placeholder="请输入用户名" name="username" id="username">
+                </div>
+                <div class="iphone reg">
+                    <input id="iphone_email" type="text" placeholder="手机号/邮箱" name="email">
+                    <div class="show_code" id="show_code">
+                        <a class="fech_code">获取验证码</a>
+                    </div>
+                </div>
+                <div class="code reg">
+                    <input type="text" placeholder="验证码" name="email_code">
+                </div>
+                <div class="password reg">
+                    <input type="password" placeholder="密码" name="password">
+                </div>
+            </div>
+            <div class="model_bottom" onclick="SubmitRegister(this);">
+                <div class="model_login_bottom">
+                    <a href="javascript:void(0)" id="register_but">注册</a>
+                </div>
+
+
+
+            </div>
+         </div>
+
+
+    </div>
+
+
+    <!--内容循环表-->
+     {% include 'content.html' %}
+
+
+    <!--发布模态对话框-->
+     <div class="model_release hide">
+        <div class="model_release_head">
+            <span>分享新发现</span>
+            <a>x</a>
+
+        </div>
+        <div class="model_release_middle">
+            <div class="model_release_middle_inner">
+                <div class="model_release_middle_head">
+                    <ul id="tab-menu-title">
+                        <li content-to="h1" class="current" onclick="bindLinkEvent(this)">链接</li>
+                        <li content-to="h2" onclick="bindLinkEvent(this)">文字</li>
+                        <li content-to="h3" onclick="bindLinkEvent(this)">图片</li>
+                    </ul>
+                </div>
+
+                <div id="tab-menu-body" class="content">
+                    <div id="h1" class="publish-content clearfix">
+                        <div class="tab-alt">添加链接</div>
+                        <div class="f1 clearfix">
+                            <div class="left"><input type="text"  name="url" /></div>
+                            <div class="right"><a href="javascript:void(0);">获取标题</a></div>
+                        </div>
+                        <div class="tab-alt">标题</div>
+                        <div class="f2">
+                            <input type="text" name="title" />
+                        </div>
+                        <div class="tab-alt">添加摘要（选填）</div>
+                        <div class="f2">
+                            <textarea name="content"></textarea>
+                        </div>
+                        <div class="f3">
+                            <span>发布到：</span>
+                            <div class="news-type" style="display: inline-block">
+                                <a value="1" class="active">42区</a>
+                                <a value="2" >段子</a>
+                                <a value="3" >图片</a>
+                                <a value="4" >挨踢1024</a>
+                                <a value="5" >你问我答</a>
+                            </div>
+                        </div>
+                        <div class="f4">
+                            <a class="submit_h1 right submit" id="submit_link">提交</a>
+                            <span class="error-msg right"></span>
+                        </div>
+                    </div>
+                    <div id="h2" class="publish-content clearfix hide">
+                        <div class="f2 h2_f2">
+                            <textarea name="content"></textarea>
+                        </div>
+                        <div class="f3 h2_f3">
+                            <span>发布到：</span>
+                            <div class="news-type" style="display: inline-block">
+                                <a value="2" class="active">段子</a>
+                                <a value="5">你问我答</a>
+                            </div>
+                        </div>
+                        <div class="f4">
+                            <a class="submit_h2 right submit" id="submit_text">提交</a>
+                            <span class="error-msg right"></span>
+                        </div>
+                    </div>
+                    <div id="h3" class="publish-content clearfix hide">
+                        <div class="tab-alt">添加图片</div>
+                        <div class="f5 h3_h5">
+                            <form style="display: inline-block" id="upload_img_form" name="form" action="/upload_image" method="POST"  enctype="multipart/form-data" >
+                                <a id="fakeFile" class="fake-file">
+                                    <span class="span1">上传图片</span>
+                                    <span class="span2">支持jpg、jepg、gif、png格式，且不超过5M</span>
+                                    <input type="file" name="img" onchange="UploadImage(this);" style="margin-top:-26px"/>
+                                    <input type="text" name="url" class="hide" id="input">
+                                </a>
+                                <iframe id='upload_img_iframe' name='upload_img_iframe' src=""  class="hide" ></iframe>
+                            </form>
+                            <a href="javascript:void(0);" class="re-upload hide" id="reUploadImage" onclick="reupload(this)">重新上传</a>
+                        </div>
+                        <div class="f2 h3_f2" style="margin-top: 8px">
+                            <textarea name="title" placeholder="请输入描述"></textarea>
+                        </div>
+                        <div class="f3 h3_f3">
+                            <span>发布到：</span>
+                            <div class="news-type" style="display: inline-block">
+                                <a value="3" class="active">图片</a>
+                                <a value="5">你问我答</a>
+                            </div>
+                        </div>
+                        <div class="f4">
+                            <a class="submit_h1 right submit" id="submit_img">提交</a>
+                            <span class="error-msg right"></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+     </div>
+
+
+
+{% endblock %}
+
+
+
+{% block js %}
+    <script>
+        $(function () {
+            bindLoginEvent(); //登陆
+            bindRegEvent();     //注册/
+            bindClearEvent();
+            bindUserEvent();    //用户名登陆模态框
+            bindIphoneEvent();  //手机号登陆模态狂
+            bindReleaseEvent(); //发布模态框
+
+            bindSubmitEventH1();//发布提交数据
+            bindSubmitEventH2();//发布提交数据
+            //bindSubmitEventH3();//发布提交数据
+
+            bindCommEvent();  //评论弹出框
+            //bindNextEvent();
+            bindEventshou();//收藏函数
+
+            bindCodeEvent();
+            bindZanEvent(); //点赞函数
+            bindGetTitle(); //获取标题，爬虫
+
+        });
+
+
+        //收藏函数
+        function bindEventshou() {
+            //登陆状态下
+            $('.main_left .content-list .main_link #coll_True').click(function () {
+                //知道到收藏的该新闻ID
+                var nid = $(this).parent().siblings('.main_information').children('.nid').html();
+                $.ajax({
+                    url:'/shoucang',
+                    type:'POST',
+                    data:{'nid':nid},
+                    dataType:'json',
+                    success:function (arg) {
+                        alert(arg)
+                    }
+                })
+
+
+            });
+
+            //为登陆时促发的函数
+            $('.main_left .content-list .main_link #coll_False').click(function () {
+                $("#model,.model_login").removeClass('hide')
+            })
+
+        }
+
+
+        //登陆显示模态对话框
+        function bindLoginEvent() {
+            $('.login_register #login').click(function () {
+                $("#model,.model_login").removeClass('hide')
+
+            });
+
+        }
+
+        //清楚模态对话框
+        function bindClearEvent() {
+            $('.model_top,.model_release_head a').click(function () {
+                $("#model,.model_login,.model_register,.model_release").addClass('hide');
+                $('.model_register_first').removeClass('hide');
+                $('.model_register_next').addClass('hide');
+
+            })
+        }
+
+        function bindUserEvent() {
+            $('.model_login_box #user').click(function () {
+                $('.user_model_middle').removeClass('hide');
+                $('.iphone_model_middle').addClass('hide');
+                $('.model_login_box #user').css('color','#2459a2');
+                $('.model_login_box #iphone').css('color','#abb6d2')
+            });
+
+        }
+
+        // 登陆ajax提交后台
+
+        function SubmitLogin(ths) {
+            $(ths).children(':eq(0)').addClass('hide');
+            $(ths).addClass('not-allow').children(':eq(1)').removeClass('hide');
+            $('#model_login .inp .error').remove(); // 移除所有的错误提示框
+
+            var post_dict = {};
+            $('#model_login .iphone_model_middle input').each(function () {
+                post_dict[$(this).attr("name")] = $(this).val();
+            });
+
+            $.ajax({
+                url:'/login',
+                type:'POST',
+                data:post_dict,
+                dataType:'json',
+                success:function (arg) {
+                    if(arg.status){
+                        window.location.href='/search';
+                    }
+                    else {
+                        $.each(arg.message,function (k,v) {
+                            var tag = document.createElement('span');
+                            tag.className = 'error';
+                            tag.innerText = v[0]["message"];
+                            $('#model_login input[name="'+ k + '"]').after(tag);
+
+                        })
+                    }
+                }
+            });
+            $(ths).removeClass('not-allow').children(':eq(1)').addClass('hide');
+            $(ths).children(':eq(0)').removeClass('hide');
+
+
+        }
+
+
+
+
+       // 登陆获取动态验证码函数
+        function ChangeCode(ths) {
+                        ths.src += '?';
+                    }
+
+        <!--手机号登陆模态框-->
+        function bindIphoneEvent() {
+            $('.model_login_box #iphone').click(function () {
+                $('.user_model_middle').addClass('hide');
+                $('.iphone_model_middle').removeClass('hide');
+                $('.model_login_box #user').css('color','#abb6d2');
+                $('.model_login_box #iphone').css('color','#2459a2')
+            })
+        }
+
+
+        <!--用户个人信息栏显示-->
+        $('.head_box #loginUserNc').mouseover(function () {
+            $('.head_box .user-opr-box').removeClass('hide')
+        });
+        $('.head_box .user-opr-box').mouseleave(function () {
+            $('.head_box .user-opr-box').addClass('hide')
+        });
+
+
+
+        //注册显示模态对话框
+        function bindRegEvent() {
+            $('.login_register #register').click(function () {
+                $("#model,.model_register").removeClass('hide')
+            })
+        }
+
+        // 提交注册按钮ajax
+        function SubmitRegister(ths) {
+            $('#register_error_summary').empty();
+            $('#model_register .reg .error').remove();
+
+            //$(ths).children(':eq(0)').addClass('hide');
+            //$(ths).addClass('not-allow').children(':eq(1)').removeClass('hide');
+
+            var post_dict = {};
+            $('#model_register input').each(function () {
+                post_dict[$(this).attr("name")]=$(this).val();
+            });
+
+
+            $.ajax({
+                url:'/register',
+                type:'POST',
+                data:post_dict,
+                dataType:'json',
+                success:function (arg) {
+                    if(arg.status){
+                        window.location.href='/search';
+                    }
+                    else {
+                        $.each(arg.message,function (k,v) {
+                            //<span class="error">s</span>
+                            var tag = document.createElement('span');
+                            tag.className ="error";
+                            tag.innerText = v[0]['message'];
+                            $('#model_register input[name="'+ k +'"]').after(tag);
+                        })
+                    }
+
+                }
+            })
+
+
+
+        }
+
+
+
+        //发布,未登陆时，弹出登陆的模态对话框
+        function bindReleaseEvent() {
+            $('#btn_Ture').click(function () {
+                $('#model,.model_release').removeClass('hide')
+            });
+            $('#btn_False').click(function () {
+                 $("#model,.model_login").removeClass('hide')
+            })
+        }
+
+        //发布的模态对话框
+        function bindLinkEvent(ths) {
+            var index = $(ths).attr('content-to'); //获得属性h1,h2,h3
+            $("#"+index).removeClass("hide");
+            $("#"+index).siblings().addClass("hide");
+            $(ths).addClass("current");
+            $(ths).siblings().removeClass("current")
+        }
+
+        // 选择新闻类型的函数
+        $('.f3 .news-type a').click(function () {
+            $(this).addClass('active').siblings().removeClass('active')
+        });
+
+
+        //发布新闻ajax提交数据到后台 h1
+        function bindSubmitEventH1() {
+            $('.content .f4 .submit_h1 ').click(function () {
+                var user_id = $('#action_nav #loginUserNc #UserProNick').html(); //用户登陆状态下的用户id
+                var f1 = $('.f1 input').val();
+                var f2_connent = $('.f2 textarea').val(); //新闻内容
+                var f2_title = $('.f2 input').val(); //新闻标题
+                var f3 = $('.f3 .active').html();
+                //alert(f3);
+                var dic_post = {'url':f1,'title':f2_title,'connent':f2_connent,'to_where':f3,'user_id':user_id};
+                $.ajax({
+                    url:'/release',
+                    type:'POST',
+                    data:dic_post,
+                    dateType:'JSON',
+                    success:function (arg) {
+                        window.location.href='/search'
+                    }
+                })
+            })
+        }
+
+
+         //发布新闻ajax提交数据到后台 h2
+        function bindSubmitEventH2() {
+            $('.content .f4 .submit_h2').click(function () {
+                var user_id = $('#action_nav #loginUserNc #UserProNick').html(); //用户登陆状态下的用户id
+                var f2_connent = $('.h2_f2 textarea').val(); //新闻内容
+                var f3 = $('.h2_f3 .active').html();
+                var dic_post = {'connent':f2_connent,'to_where':f3,'user_id':user_id};
+                $.ajax({
+                    url:'/h2',
+                    type:'POST',
+                    data:dic_post,
+                    dateType:'JSON',
+                    success:function (arg) {
+                        window.location.href='/search'
+                    }
+                })
+            })
+        }
+
+
+         //发布新闻ajax提交数据到后台 h3
+        /*
+        function bindSubmitEventH3() {
+            $('.content .f4 .submit_h3').click(function () {
+
+                var user_id = $('#action_nav #loginUserNc #UserProNick').html(); //用户登陆状态下的用户id
+                var f1 = $('.h3_f1 input').val();
+                var f2_connent = $('.h3_f2 textarea').val(); //新闻内容
+                var f2_title = $('.h3_f2 input').val(); //新闻标题
+                var f3 = $('.h3_f3 .active').html();
+                //alert(f3);
+                var dic_post = {'url':f1,'title':f2_title,'connent':f2_connent,'to_where':f3,'user_id':user_id};
+                $.ajax({
+                    url:'/release',
+                    type:'POST',
+                    data:dic_post,
+                    dateType:'JSON',
+                    success:function (arg) {
+                        window.location.href='/search'
+                    }
+                })
+            })
+        }*/
+
+
+
+
+        //点赞登陆状态时，则ajax提交数据到后台，否则弹出登陆的模态对话框
+        function bindZanEvent() {
+            $('.content-list .left_content #thumb_True').click(function () {
+                //alert('OK')
+
+                var nid = $(this).parent().siblings('.main_information').children('.nid').html();
+                //直接在前端渲染加1 数量的效果
+                //var count = $(this).children('b').html();
+                //var count = parseInt(count)+1;
+                //$(this).children('b').html(count);
+
+                var ths = $(this)
+                $.ajax({
+                    url:'/dianzan',
+                    data:{'user':nid},
+                    type:'POST',
+                    dataType:'json',
+                    success:function (arg) {
+                        if (arg.status){
+                            //执行 +1 的效果
+                            var count = ths.children('b').html();
+                            var count = parseInt(count)+1;
+                            ths.children('b').html(count);
+                            $('.thumb_up span').addClass('dianzan');
+                            adddianzan(ths)
+                        }
+                        else {
+                            // 执行 -1 的效果
+                            var count = ths.children('b').html();
+                            var count = parseInt(count)-1;
+                            ths.children('b').html(count);
+                            $('.thumb_up span').removeClass('dianzan');
+                            removedianzan(ths)
+                        }
+                    }
+                })
+            });
+
+            //未登陆时促发的函数
+            $('.content-list .left_content #thumb_False').click(function () {
+                $("#model,.model_login").removeClass('hide')
+            });
+        }
+
+
+        // 点赞+1效果
+        function adddianzan(ths) {
+            var fz = 18;
+            var tp = 5;
+            var lf = 5;
+            var op = 1;
+            var tag = document.createElement('span');
+            tag.innerHTML = '+1';
+            tag.style.position = 'absolute';
+            tag.style.color = 'green';
+            tag.style.fontSize = fz + 'px';
+            tag.style.top = tp + 'px';
+            tag.style.left = lf + 'px';
+            tag.style.opacity = op;
+            ths.append(tag);
+
+            var obj = setInterval(function () {
+                fz += 10;
+                tp -= 5;
+                lf += 5;
+                op -= 0.1;
+                tag.style.color = 'red';
+                tag.style.fontSize = fz + 'px';
+                tag.style.top = tp + 'px';
+                tag.style.left = lf + 'px';
+                tag.style.opacity = op;
+                if (op < 0) {
+                    clearInterval(obj);
+                    $(tag).remove()
+                }
+            }, 100);
+        }
+
+        // 点赞+1效果
+        function removedianzan(ths) {
+            var fz = 18;
+            var tp = 5;
+            var lf = 5;
+            var op = 1;
+            var tag = document.createElement('span');
+            tag.innerHTML = '-1';
+            tag.style.position = 'absolute';
+            tag.style.color = 'green';
+            tag.style.fontSize = fz + 'px';
+            tag.style.top = tp + 'px';
+            tag.style.left = lf + 'px';
+            tag.style.opacity = op;
+            ths.append(tag);
+            var obj = setInterval(function () {
+                fz += 10;
+                tp -= 5;
+                lf += 5;
+                op -= 0.1;
+                tag.style.color = 'red';
+                tag.style.fontSize = fz + 'px';
+                tag.style.top = tp + 'px';
+                tag.style.left = lf + 'px';
+                tag.style.opacity = op;
+                if (op < 0) {
+                    clearInterval(obj);
+                    $(tag).remove()
+                }
+            }, 100);
+
+        }
+
+
+
+
+
+        // 评论弹出框显示和隐藏
+        function bindCommEvent() {
+            $('.left_content .comments').click(function () {
+               // var status = $('.left_content .comments_content').hasClass('hide');
+                $(this).parents('.main_link').siblings('.comments_content').find('ul').empty(); //每次点开之前都会清空当前评论url下的数据
+                var status = $(this).parents('.main_link').siblings('.comments_content').hasClass('hide');
+                if(status){
+                    $(this).parents('.main_link').siblings('.comments_content').removeClass('hide');
+                    var ths = $(this).parents('.main_link').siblings('.comments_content').find('ul');
+
+                    ///ajax向后台发送点击新闻ID获取新闻所有评论
+                    //新闻 ID
+                    var nid = $(this).parent().siblings('.main_information').children('.nid').html();
+                    $.ajax({
+                        url:'/pinglun',
+                        data:{'new_id':nid},
+                        type:'GET',
+                        dataType:'json',
+                        success:function (arg) {
+                            creat_tree(arg, ths);
+                            //ths.empty();
+                            //ths.append("fdasfdsafsadf")
+                        }
+                    })
+
+                }
+                // 再次点击时隐藏
+                else {
+                    $(this).parents('.main_link').siblings('.comments_content').addClass('hide')
+                }
+            })
+        }
+
+        //递归函数循环遍历子对象
+        function diGui(children_list) {
+            var html = "";
+            $.each(children_list,function (ck,cv) {
+                var b = '<div class="item-inner"><a class="p_user" href="javascript:void(0)">';
+                b += cv.user__username +'</a><span>';//评论的用户
+
+                b+= cv.content + "</span>";
+
+                b += '<span class="H_J">' +
+                        '<a class="huifu_p " onclick=huifu_p(this) href="javascript:void(0)">回复</a>' +
+                        '</span>';
+
+               // 有多个个深层子对象就调用多少次递归函数
+                b += diGui(cv.children);
+                b += "</div>";
+                html += b;
+             });
+            return html;
+        }
+
+        
+
+        // 创建生成树
+        function creat_tree(data,$this) {
+           // var html = '<li class="item">';
+
+            $.each(data,function (k,v) {
+                var html = '<li class="item">';
+                var a = '<div class="item-inner"><a class="p_user" href="javascript:void(0)">';
+                a += v.user__username +'</a><span>'; //显示作者
+
+                a += v.content + '</span>';
+
+                a += '<span class="H_J">' +
+                        '<a class="huifu_p " onclick=huifu_p(this) href="javascript:void(0)">回复</a></span>';
+                //创建子评论
+                // 调用递归函数去循环每个子对象
+                a +=diGui(v.children);
+
+                a += "</div>";
+                html += a;
+                html += '</li>';
+            $this.append(html)
+            });
+            //html += '</li>';
+            //$this.append(html)
+        }
+
+        // 评论回复函数
+        function huifu_p(ths) {
+            //var content = $(ths).siblings('span').html();
+            var user = $(ths).parent().siblings('.p_user').html();
+            var comment = $(ths).siblings('span').html(); //获取内容添加到隐藏标签
+            $(ths).parents('ul').siblings('.comment_huifu').find('.fabu_partent_comment').html(comment);
+
+            $(ths).parents('ul').siblings('.pinglin_to_user').removeClass('hide');
+            $(ths).parents('ul').siblings('.pinglin_to_user').find('a').html(user); //添加作者
+        }
+
+
+        // 评论提交内容块
+        //登陆状态下可以向后台提交数据
+        function fabu_True(ths) {
+            //获取你评论的内容
+            var val = $(ths).parent('.huifu_btn').siblings('.huifu_inner').children('textarea').val(); //自己评论为内容
+            var new_id =$(ths).parents('.comments_content').siblings('.main_information').find('.nid').html(); //新闻ID
+            var user_id = $('#action_nav #loginUserNc #UserProNick').html(); //用户登陆状态下的用户ID
+            var partnet_user = $(ths).parents('.comment_huifu').siblings('.pinglin_to_user').children('a').html();//找到用户
+            var partent_comment = $(ths).siblings('.fabu_partent_comment').html(); // 评论的父级内容
+            //向后台发送评论数据
+            $.ajax({
+                url:'/huifu_p',
+                data:{val:val,partnet_user:partnet_user,new_id:new_id,user_id:user_id,partent_comment:partent_comment},
+                type:"POST",
+                dataType:'json',
+                success:function (arg) {
+                    shuaxin_P(arg,ths,val,partent_comment); //调用刷新评论页面
+                }
+            })
+
+        }
+
+        // 刷新评论函数,向评论框添加评论后的内容。
+        function shuaxin_P(arg,ths,val,partent_comment) {
+            $(ths).parents('.comment_huifu').siblings('.pinglin_to_user').addClass('hide'); // 将回复标签隐藏
+            $(ths).siblings('.fabu_partent_comment').empty();
+            //bindCommEvent()
+            //var p_conntent = $('.comment_title_box ul li span').html();
+            //console.log(p_conntent)
+            if(partent_comment){
+                $.each(length(('.comment_title_box ul li span').html()),function () {
+                if($('.comment_title_box ul li span').html()==partent_comment){
+                    //创建一个div标签
+                    var tag = document.createElement('div');
+                    tag.attr('class','item-inner');
+                    var child_tag_a1 = document.createElement('a');
+                    child_tag_a1.attr('class','p_user');
+                    var child_tag_span = document.createElement('span')
+                    var child_tag_a2 = document.createElement('a');
+                    child_tag_a2.attr('class','huifu_p');
+                    child_tag_a2.attr('onclick','huifu_p(this)');
+                    child_tag_a2.appendTo(tag);
+                    child_tag_a1.appendTo(tag);
+                    child_tag_span.appendTo(tag);
+                    tag.appendTo('.comment_title_box ul li')
+
+                 }
+                })
+            }
+            else {
+                //评论为父评论，创建一个li标签
+            }
+
+
+        }
+
+
+        // 点击关闭评论弹出框
+        $('.comments_content .shouqi_btn,.close-btn').click(function () {
+            $(this).parents('.comments_content').addClass('hide');
+            $('.comments_content .comment-box .pinglin_to_user').addClass('hide')
+        });
+
+
+
+        //未登录时发布内容时弹出登陆对话框
+        function fabu_False() {
+            $("#model,.model_login").removeClass('hide')
+        }
+
+
+        //上传图片
+        //图片input改变时促发的函数
+        function UploadImage(ths) {
+            document.getElementById('upload_img_iframe').onload = reuploadimg;
+             //调用这个标签去执行submit向后台发送数据的函数
+            document.getElementById('upload_img_form').target = 'upload_img_iframe';
+            document.getElementById('upload_img_form').submit(); //相当于提交按钮
+        }
+
+        // 图片上传调用的函数，来在当前页面显示出来
+        function reuploadimg() {
+            var txt = $("#upload_img_iframe").contents().find("body").text();
+            var obj = JSON.parse(txt);  // 后台传送来的是json数据，所以需要转换一下
+            //得到结果如下
+            //'path':"static\imgs\QQ截图20161226180326.png",'status':true
+            if(obj.status){
+                var img = document.createElement('img');  // 创建一个img标签
+                img.src = '/' + obj.path;
+                //console.log(img.src);
+                img.style.width = "300px";  // 设置图片的宽度高度
+                img.style.height = "180px";
+                $("#upload_img_form").append(img);
+                $('#fakeFile').addClass('hide');
+                $('#reUploadImage').removeClass('hide');
+                $('#fakeFile').find('input[type="text"]').val(obj.path);
+            }
+        }
+
+
+        // 重新上传图片函数
+        function reupload(ths) {
+            $(ths).addClass('hide'); //给自己加上hide属性
+
+            //$('#upload_img_form').reset(); //同样是清空效果
+            $('#upload_img_form').find('img').remove() ;//找到img标签删除
+            $('#fakeFile').removeClass('hide');
+
+            //点击重新上传后需要删除本地文件
+            var name = $('#upload_img_form #input').val(); //获得图片保存到本地的路径
+            var obj = new ActiveXObject("Scripting.FileSystemObject")
+            console.log(obj)
+
+        }
+
+
+
+        // 向邮箱获取验证码
+        function bindCodeEvent() {
+            $('.model_register .iphone_model_middle #show_code').click(function () {
+                //整体错误清空
+                $('#register_error_summary').empty();
+                //获取邮箱输入的值
+                var email = $('#iphone_email').val();
+                if(email.trim().length==0){
+                    $('#register_error_summary').text('请输入注册邮箱');
+                    return;
+                }
+
+                //点击的按钮
+                if($(this).hasClass('sending')){
+                    return
+                }
+
+
+                var ths = $(this);
+                var time = 60;
+
+                $.ajax({
+                    url: "/send_msg", //发送邮箱验证
+                    type: 'POST',
+                    data: {email: email},
+                    dataType: 'json',
+                    success:function (arg) {
+                        if(!arg.status){
+                            $('#register_error_summary').text(arg.summary);
+                        }else{
+                            // 后台已经发送成功
+                            ths.addClass('sending');
+                            var interval = setInterval(function(){
+                                ths.text("已发送(" + time + ")");
+                                time -= 1;
+                                if(time <= 0){
+                                    clearInterval(interval);
+                                    ths.removeClass('sending');
+                                    ths.text("获取验证码");
+                                }
+                            }, 1000);
+                        }
+                    }
+                })
+            })
+        }
+
+
+        // 获取标题，爬虫模块
+        function bindGetTitle() {
+            $('#h1 .clearfix .right a').click(function () {
+                var url= $('#h1 .clearfix .left input').val();
+                $.ajax({
+                    url:'/getTitle',//发送获取的url
+                    type:'POST',
+                    data:{'URL':url},
+                    dataType: 'json',
+                    success:function (arg) {
+                        //alert(arg.title)
+                        var a = $('#h1 .f2 input').val(arg.title);
+
+                    }
+
+                })
+            })
+            
+        }
+
+
+
+
+
+
+    </script>
+
+{% endblock %}

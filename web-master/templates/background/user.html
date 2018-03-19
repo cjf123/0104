@@ -1,0 +1,169 @@
+{% extends 'login_reg.html' %}
+
+{% block css %}
+    <link href="/static/css/user.css" rel="stylesheet" type="text/css">
+
+<style>
+    .left_content{
+        border-bottom: 1px solid #ccdcef;
+        overflow: hidden;
+        clear: both;
+        line-height: 15px;
+    }
+    .inner-area1{
+        margin: 10px;
+        padding: 13px;
+        background-color: #e6ecf3;
+        border: 1px solid #ccdcef;
+        position: relative;
+        min-height: 66px;
+    }
+    .inner-area1 .top1{
+        /*overflow: hidden;*/
+        clear: both;
+        position: relative;
+    }
+    .inner-area1 .top1 .img{
+        display: inline-block;
+        position: absolute;
+    }
+    .inner-area1 .top1 .img img{
+        background-color: #fff;
+        border: 1px solid #ccc;
+        padding: 3px;
+        width: 56px;
+        height: 56px;
+    }
+    .inner-area1 .top1 .user{
+        display: inline-block;
+        position: relative;
+    }
+    .inner-area1 .top1 .user .time{
+        display: inline-block;
+        width: 31px;
+        height: 15px;
+        margin: 0 4px;
+        background-color: #689aca;
+        color: #fff;
+        border-radius: 8px 0;
+        line-height: 15px;
+        text-align: center;
+        font-size: 10.38px;
+        cursor: pointer;
+    }
+    .inner-area1 .top1 .user .tu{
+        font-size: 13px;
+        line-height: 15px;
+        font-weight: 700;
+        padding-top: 0;
+        margin-left: 85px;
+        display: inline-block;
+        width: 100px;
+        height: 15px;
+        overflow: hidden;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+    }
+    .inner-area2{
+        background-color: #e6ecf3;
+        border: 1px solid #ccdcef;
+        padding: 13px;
+        margin: 10px;
+        overflow: hidden;
+    }
+    .inner-area2 .inner-s1{
+        float: left;
+        text-align: center;
+        width: 100px;
+    }
+    .inner-area2 .inner-s1 a{
+        display: block;
+    }
+
+
+</style>
+ {% endblock %}
+
+{% block body %}
+
+<div class="outer" style="margin-top: 44px">
+    <div class="inner-top">
+        <span>我的榜单</span>
+    </div>
+    <hr style="margin-top: 10px">
+    <div class="inner-middle">
+        <div class="model_release_middle_head">
+            <ul id="tab-menu-title">
+                <li content-to="h1" class="current" onclick="bindLinkEvent(this)">我的发布</li>
+                <li content-to="h2" onclick="bindLinkEvent(this)">收藏</li>
+                <!--<li content-to="h3" onclick="bindLinkEvent(this)">我的评论</li>-->
+            </ul>
+        </div>
+        <div>
+            <div id="h1" class="">
+
+                {% for i in news_list %}
+                  {% include 'my_content.html' %}
+                {% endfor %}
+            </div>
+            <div id="h2" class=" hide">
+                    {% for i in news_shoucang %}
+                        {% include 'my_content.html' %}
+                    {% endfor %}
+            </div>
+
+        </div>
+
+    </div>
+
+    <div class="inner-right">
+        <div class="inner-R">
+            <!--显示用户信息,含编辑-->
+            <div class="inner-area1 corner">
+                <div class="top1">
+                    <div class="img"><img src="/static/images/1.jpg"></div>
+                    <div class="user">
+                        <div class="tu"><a>{{ user_name }}</a></div>
+                        <a><div class="time">0年</div></a>
+                        <a href="/banji">编辑</a>
+                    </div>
+                </div> 
+            </div>
+            <div class="inner-area2 corner">
+                <div class="inner-s1">
+                    <a>{{ shoucang_num }}</a>
+                    <a>收藏</a>
+                </div>
+                <div class="inner-s1">
+                    <a>{{ fabu_num }}</a>
+                    <a>发布</a>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+
+</div>
+{% endblock %}
+
+{% block js %}
+<script>
+     <!--用户个人信息栏显示-->
+        $('.head_box #loginUserNc').mouseover(function () {
+            $('.head_box .user-opr-box').removeClass('hide')
+        });
+        $('.head_box .user-opr-box').mouseleave(function () {
+            $('.head_box .user-opr-box').addClass('hide')
+        });
+
+     function bindLinkEvent(ths) {
+            var index = $(ths).attr('content-to'); //获得属性h1,h2,h3
+            $("#"+index).removeClass("hide");
+            $("#"+index).siblings().addClass("hide");
+            $(ths).addClass("current");
+            $(ths).siblings().removeClass("current")
+        }
+
+</script>
+{% endblock %}

@@ -1,0 +1,468 @@
+body{
+    background-color: #eeeeee;
+}
+*{
+    /*统一设定取消和浏览器的边距*/
+    margin: 0;
+    padding: 0;
+}
+
+a{
+    /*取消所有链接的下划线*/
+    text-decoration: none !important;
+}
+body{
+    /*设置body内的字体大小*/
+    font-size: 10px;
+}
+
+.head_box{
+    /*设置导航条外部的div的属性*/
+    background-color: #24A27F;
+    width: 100%;
+    height: 44px;
+    top: 0;
+    left: 0;
+    position: fixed; /*定位*/
+    z-index: 1000;
+}
+.head_box_contend{
+    /*设置导航条内部div，也就是存放内容的属性*/
+    /*background-color: green;*/
+    margin: 0 auto;
+    width: 960px;
+    height: 40px;
+    position: relative; /*定位*/
+
+}
+
+.head_box .head_box_contend .logo{
+    /*设置logo的属性*/
+    background: url("/static/images/nylogo.png") no-repeat 0 0;
+    width: 121px;
+    height: 23px;
+    float: left;
+    margin-top: 10px;
+}
+
+.head_box .head_box_contend .head_box_model{
+    /*设置导航条内的索引字的div的属性*/
+    line-height: 44px;
+    float: left;
+    margin-left: 20px;
+}
+.head_box .head_box_contend .head_box_model a.tb{
+    /*设置a标签内的字体的属性*/
+    color: #c0cddf;
+    margin: -4px;
+    padding: 0 13px 0 11px;
+    display: inline-block;
+}
+.head_box_model a.tb:hover{
+    /*设置a标签连接伪类属性*/
+    color: #FFFFFF;
+    background-color: #206892;
+}
+.head_box_model a.tb1,.head_box_model a.tb1:hover{
+    /*设置特定的属性<'全部'这个标签>*/
+    color: #FFFFFF;
+    background-color: #018184;
+}
+
+.head_search{
+    /*搜索框的属性设置*/
+    margin-top: 7px;
+    float: right;
+}
+.head_search .search_key,.head_search .search_button{
+    float: left;
+}
+.head_search .search_key{
+    /*搜索框的大小属性设置*/
+    width: 90px;
+    height: 25px;
+    padding: 2px 2px 2px 2px;
+}
+.head_search .button{
+    /*设置搜索按钮的属性*/
+    background: url("/static/images/icon.png") no-repeat 0 -197px;
+    width: 15px;
+    height: 12px;
+    display: inline-block;
+    margin-top: 9px;
+    margin-left: 10px;
+}
+.head_search a.search_button{
+    /*设置搜索按钮的盒子属性*/
+    height: 32px;
+    width: 30px;
+    background-color: #f4f4f4;
+    display: inline-block;
+    border-left:none;  /*设置盒子的左边距为空*/
+}
+
+.login_register{
+    /*登陆注册div的属性设置*/
+    position: absolute; /*相对于上面定义的position而言，否则无意义*/
+    right: 130px;
+    line-height: 44px; /*居中*/
+}
+
+#login_register {
+    width: 80px;
+
+}
+#login_register a{
+    padding: 16px 16px;
+    margin-left: -19px;
+    color: white;
+}
+#login_register a:hover{
+    background-color: darkolivegreen;
+}
+
+.login_register .img_user a{
+    color: #c0cddf;
+    padding: 0 15px;
+    display: inline-block;
+    line-height: 44px;
+
+
+}
+/*.login_register a:hover{*/
+    /*!*设置登陆注册链接的属性*!*/
+    /*background-color: #206892;*/
+/*}*/
+.login_register .img_user{
+    cursor: pointer;
+    height: 44px;
+    text-align: center;
+
+}
+.login_register .img_user .user_menu{
+    vertical-align: 15px;
+}
+
+.login_register .img_user:hover{
+    background-color: #206892;
+}
+
+
+
+
+
+
+/*核心内容模块*/
+
+
+.main_content{
+    /*设置核心内容外部盒子的属性*/
+    background-color: #ededed;
+    padding-top: 44px;
+    width:100%;
+    z-index: 99;
+
+}
+
+.main_middle{
+    background-color: #fff;
+    width: 920px;
+    margin: 0 auto;  /*居中*/
+    overflow: hidden;  /*超出部分隐藏起来*/
+    height: auto!important; /*以这个高度设置为准*/
+    min-height: 713px;  /*最小高度*/
+    padding: 6px 20px 60px 20px;
+}
+
+.main_left{
+    /*设置左边盒子属性*/
+    width: 600px;
+    float: left;
+    overflow: hidden;
+    margin-top: 3px;
+}
+
+.main_left .left_button{
+    /*设置存储按钮盒子的信息*/
+    border-bottom: 1px solid #ccdcef;
+    overflow: hidden;
+    clear: both;
+}
+.left_button1,.left_button2{
+    float: left;
+}
+.left_button3{
+    float: right;
+}
+
+.left_button1 a{
+    display: inline-block;
+    width: 60px;
+    height: 26px;
+    line-height: 26px;
+    margin-top: 3px;
+    margin-bottom: 10px;
+    color: #369;
+    font-size: 10px;
+    font-weight: 700; /*设置字体的粗细*/
+    text-align: center;
+}
+
+.button_hot{
+    background: url("/static/images/tip.png") no-repeat 0 -299px;
+}
+
+.left_button2{
+    margin-left: 120px;
+    margin-top: 10px;
+}
+.left_button2 a{
+    margin-left: 8px;
+}
+.left_button2 .active{
+    color: #d4d4d4;
+    text-align: center;
+}
+.left_button2 .time{
+    color: green;
+    text-align: center;
+}
+
+.left_button3 {
+    display: inline-block;
+    width: 100px;
+    height: 22px;
+    background-color: #84a42b;
+    line-height: 22px;
+    text-align: center;
+    margin-top: 4px;
+}
+
+
+.left_button3 .release{
+    color: #ffffff;
+}
+.left_button3:hover{
+    cursor: pointer;
+}
+
+.main_left .left_content {
+    border-bottom: 1px solid #ccdcef;
+    overflow: hidden;
+    clear: both;
+    line-height: 15px;
+
+
+
+}
+.left_content .photo{
+    float: right;
+    margin-top:10px;
+    margin-left: 10px;
+}
+
+.left_content .main_information{
+    margin-top: 8px;
+
+}
+.left_content .main_information .information{
+    color: #369;
+    font-size: 14px;
+    font-weight: 700;
+
+
+}
+.left_content .main_information .net_url,.sources{
+    color: #ccdcef;
+}
+.left_content .main_information .sources{
+    text-decoration: underline;
+}
+
+.left_content .main_link{
+    margin-top: 6px;
+    margin-bottom: 6px;
+}
+.link_icon{
+    background: url("/static/images/icon_18_118.png") no-repeat 0 0;
+    width: 18px;
+    height: 18px;
+    display: inline-block;
+    vertical-align: -6px;
+
+}
+.T{
+    background-position: 0 -40px;
+}
+.C{
+    background-position: 0 -100px;
+}
+.CO{
+    background-position: 0 -140px;
+}
+.icon{
+    vertical-align: -4px;
+}
+.time_go{
+    color: #e59373;
+    font-weight:400;
+}
+.time_into {
+    color: #ccc;
+    font-weight: 400;
+}
+.main_share i{
+    color: #ccc;
+    font-weight: 400;
+}
+
+.share_icon a{
+    background: url("/static/images/share_icon.png");
+    height: 14px;
+    width: 17px;
+    display: inline-block;
+    vertical-align: -4px;
+    margin-left: 1px;
+    opacity: 0.3;
+}
+.share_icon a:hover{
+    opacity: 1;
+}
+.share_icon .icon_sina{
+    background-position: 0 -90px;
+}
+.share_icon .icon_douban{
+    background-position: 0 -105px;
+}
+.share_icon .icon_qqzone{
+    background-position: 0 -120px;
+}
+.share_icon .icon_tenxun{
+    background-position: 0 -136px;
+}
+.share_icon .icon_renren{
+    background-position: 0 -151px;
+}
+
+.left_limit{
+    margin-bottom: 36px;
+}
+
+.left_limit ul li {
+    display: block;
+
+}
+.left_limit .dig_limit{
+    margin-top: 14px;
+    margin-left: 5px;
+}
+.left_limit .dig_limit a {
+    /*background-color: green;*/
+    padding: 8px 14px;
+    line-height: 34px;
+    text-align: center;
+    border: 1px solid #e1e1e1;
+    border-radius: 5px;
+    margin-left: 8px;
+}
+.left_limit .dig_limit .active{
+    padding: 8px 10px !important;
+}
+.left_limit .dig_limit .cur_active{
+    border: none !important;
+}
+
+.left_limit .dig_limit .next{
+    height: 34px;
+    width: 64px;
+}
+.left_limit .dig_limit a:hover{
+    color: #fff;
+    background-color: #369;
+}
+.left_limit .dig_limit .cur_active:hover{
+    background-color: transparent;
+    color: black;
+    cursor: text;
+}
+.left_limit .dig_limit .one{
+    margin-right: 14px;
+}
+
+
+/*底部注释*/
+
+.main_bottom{
+    clear: both;
+    border-top: 1px solid #ccdcef;
+
+}
+
+ .foot-nav,.foot-nav2 {
+    text-align: center;
+}
+
+.foot-nav a{
+    color: #336699;
+    margin-left: 8px;
+}
+
+.pg-footer{
+    width: 960px;
+    margin: 0 auto;
+    background-color: white !important;
+}
+
+.pg-footer .inner{
+    clear: both;
+    background-color: #ffffff;
+    width: 960px;
+    margin: 0 auto;
+}
+.pg-footer .foot-nav {
+        padding-top: 15px;
+        text-align: center;
+        border-top: 1px solid #CCDCEF;
+        position: relative;
+    }
+
+    .pg-footer .foot-nav2 {
+        margin-top: 6px;
+        padding-bottom: 15px;
+        text-align: center;
+    }
+
+
+
+
+
+
+
+/*右侧*/
+.main_right .right_chat{
+    float: right;
+}
+
+
+/*登陆注册的模态对话框*/
+.model{
+    position: fixed;
+    display: block;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: black;
+    opacity: 0.5;
+    z-index: 99;
+
+}
+.hide{
+    display: none;
+}
+
+
+
+/*后台我的收藏的CSS*/
+
+

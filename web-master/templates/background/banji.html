@@ -1,0 +1,209 @@
+{% extends 'login_reg.html' %}
+
+{% block css %}
+    <style>
+    .b1{
+        margin-top: 44px;
+    }
+    .b1 .b2{
+        font-family: 微软雅黑;
+        font-size: 20px;
+        margin-left: 135px;
+    }
+    .b1 .b3{
+        height: 40px;
+        line-height: 40px;
+        color: #2459a2;
+        font-size: 15px;
+        margin-left: 135px;
+    }
+    .b1 table{
+        margin-left: 135px;
+        width: 710px;
+    }
+    .b1 table .hide{
+        display: none;
+    }
+    .b1 td{
+        border-bottom: 1px solid #f6f6f6;
+        padding: 25px 0;
+    }
+    .b1 table .t1{
+        width: 88px;
+        text-align: left;
+        color: #666;
+    }
+    .b1 table .t2{
+        border-collapse: collapse;
+        font-weight: 400;
+        text-align: left;
+        width: 150px;
+    }
+    .b1 table .t2 .i2{
+        height: 31px;
+        line-height: 31px;
+        width: 130px;
+        border: 1px solid #dadada;
+    }
+    .b1 table .t2 #qian{
+        width: 200px;
+        height: 100px;
+        resize: none;
+        padding: 5px;
+        line-height: 14px;
+    }
+    .b1 table .btn{
+        width: 100px;
+        display: inline-block;
+        height: 32px;
+        line-height: 32px;
+        background-color: #07639a;
+        color: #fff;
+        text-align: center;
+        font-size: 13px;
+    }
+    </style>
+{% endblock %}
+
+{% block body %}
+
+<div class="b1">
+    <div class="b2"><span>账号设置</span></div>
+    <div class="b3">
+        <a href="javascript:void(0)" class="b4" onclick="bindEventMsg(this)">基本信息</a>
+        <a href="javascript:void(0)" class="b5" onclick="bindEventPwd(this)">修改密码</a>
+    </div>
+    <hr style="margin-top: 10px">
+    <table>
+        <tbody class="message">
+            <tr>
+                <td class="t1">昵称</td>
+                <td class="t2"><input type="text" tabindex="2" maxlength="10" class="i2 user1"></td>
+                <td class="t3"></td>
+            </tr>
+            <tr>
+                <td class="t1" style="vertical-align: top">头像</td>
+                <td class="t2">
+                    <div style="display: inline-block"><img src="/static/images/1.jpg"></div>
+                    <a href="javascript:void(0)" style="color: #99aecb">替换图像</a>
+                </td>
+                <td class="t3"></td>
+            </tr>
+            <tr>
+                <td class="t1">性别</td>
+                <td class="t2">
+                    <input type="radio" name="sex" id="boy" value="false">
+                    <label for="boy">男</label>
+                    <input type="radio" name="sex" usersex="true" id="gir" value="true" checked="checked">
+                    <label for="gir">女</label>
+                </td>
+            </tr>
+            <tr>
+                <td class="t1">邮箱</td>
+                <td class="t2">
+                    <input type="text" tabindex="3" maxlength="20" class="i2 user2"></td>
+                </td>
+                <td class="t3"></td>
+            </tr>
+            <tr>
+                <td class="t1"><a class="btn btn1" href="javascript:void(0)">保存</a></td>
+            </tr>
+        </tbody>
+
+        <tbody class="pwd hide">
+            <tr>
+                <td class="t1">旧密码</td>
+                <td class="t2"><input type="password" tabindex="2" maxlength="10" class="i2 p1"></td>
+                <td class="t3"></td>
+            </tr>
+            <tr>
+                <td class="t1">新密码</td>
+                <td class="t2"><input type="password" tabindex="2" maxlength="10" class="i2 p2"></td>
+                <td class="t3"></td>
+            </tr>
+            <tr>
+                <td class="t1">确认密码</td>
+                <td class="t2"><input type="password" tabindex="2" maxlength="10" class="i2 p3"></td>
+                <td class="t3"></td>
+            </tr>
+            <tr>
+                <td class="t1"><a class="btn2 btn" href="javascript:void(0)">保存</a></td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+{% endblock %}
+
+{% block js %}
+<script>
+
+
+ $(function () {
+     bindEventBtn1(); //提交个人信息
+     bindEventBtn2(); //修改个人密码
+
+ });
+ <!--用户个人信息栏显示-->
+ $('.head_box #loginUserNc').mouseover(function () {
+     $('.head_box .user-opr-box').removeClass('hide')
+ });
+ $('.head_box .user-opr-box').mouseleave(function () {
+    $('.head_box .user-opr-box').addClass('hide')
+ });
+
+ // 模态对话框模块
+ function bindEventMsg(ths) {
+        $('table .message').removeClass('hide').siblings().addClass('hide');
+    }
+ function bindEventPwd(ths) {
+    $('table .pwd').removeClass('hide').siblings().addClass('hide');
+ }
+
+ function bindEventBtn1() {
+     $('table .t1 .btn1').click(function () {
+         var user_name = $('table .message .t2 .user1').val();//获得用户名
+         var user_email = $('table .message .t2 .user2').val(); //获得用户邮箱
+         var post_dict = {'user_name':user_name,'user_email':user_email};
+        $.ajax({
+            url:'/btn_user',
+            type:'POST',
+            data:post_dict,
+            dataType:'json',
+            success:function (arg) {
+                alert(arg)
+            }
+        })
+     })
+ }
+
+ function bindEventBtn2() {
+     $('table .t1 .btn2').click(function () {
+         var p1 = $('table .pwd .t2 .p1').val();//旧密码
+         var p2 = $('table .pwd .t2 .p2').val();//新密码
+         var p3 = $('table .pwd .t2 .p3').val();//确认新密码
+         var dict_post = {'p1':p1,'p2':p2,'p3':p3};
+         $.ajax({
+             url:'/btn_pwd',
+             type:'POST',
+             data:dict_post,
+             dataType:'json',
+             success:function (arg) {
+                 if (arg.status){
+                     alert(arg.message);
+                     window.location.href='/logout'
+                 }
+                 else {
+                     alert(arg.message)
+                 }
+             }
+         })
+
+
+     })
+ }
+
+
+
+  </script>
+{% endblock %}

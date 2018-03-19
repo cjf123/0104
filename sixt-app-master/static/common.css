@@ -1,0 +1,89 @@
+body, dd, dl, dt, fieldset, form, h1, h2, h3, h4, h5, h6, html, img, legend, li, ol, p, ul {
+  margin: 0;
+  padding: 0
+}
+
+fieldset, img {
+  border: none
+}
+
+img {
+  display: block
+}
+
+ol, ul {
+  list-style: none
+}
+
+input {
+  padding-top: 0;
+  padding-bottom: 0;
+  border: none
+}
+
+a {
+  text-decoration: none
+}
+
+body {
+  font-family: "Microsoft JhengHei", "Microsoft YaHei", "Trebuchet MS", Arial, Verdana, Tahoma, sans-serif;
+  color: #4c4c4c;
+  background-color: #DEDEDE;
+  height: 100%;
+  overflow-x: hidden;
+  overflow-y: auto;
+  display: block;
+  min-height: 100%;
+}
+
+div {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  outline: 0;
+  vertical-align: baseline
+}
+
+.fl {
+  float: left
+}
+
+.fr {
+  float: right
+}
+
+.clearfix:after {
+  content: "";
+  height: 0;
+  line-height: 0;
+  display: block;
+  visibility: hidden;
+  clear: both
+}
+
+.clearfix {
+  zoom: 1
+}
+
+.fade-enter-active, .fade-leave-active {
+  transition: opacity .3s
+}
+
+.fade-enter, .fade-leave-to {
+  opacity: 0
+}
+
+@font-face {
+  font-family: 'iconfont';  /* project id 550332 */
+  src: url('//at.alicdn.com/t/font_550332_05p05t6w6irudi.eot');
+  src: url('//at.alicdn.com/t/font_550332_05p05t6w6irudi.eot?#iefix') format('embedded-opentype'),
+  url('//at.alicdn.com/t/font_550332_05p05t6w6irudi.woff') format('woff'),
+  url('//at.alicdn.com/t/font_550332_05p05t6w6irudi.ttf') format('truetype'),
+  url('//at.alicdn.com/t/font_550332_05p05t6w6irudi.svg#iconfont') format('svg');
+}
+
+.iconfont {
+  font-family: "iconfont", serif;
+  font-size: 16px;
+  font-style: normal;
+}

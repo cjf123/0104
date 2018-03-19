@@ -1,0 +1,25 @@
+<!--index.wxml-->
+<!--更多源码请于51小程序源码版块下载：http://bbs.html51.com/f-36-1/-->
+<view class="usermotto">
+    <text class="user-motto">{{motto}}</text>
+  </view>
+
+<view class="viewName">
+  <navigator url="Component/View/View">
+    <text class="view-Name">View组件示范</text>
+  </navigator>
+</view>
+<view class="viewName">
+  <navigator url="Component/ScrollView/ScrollView">
+    <text class="view-Name">Scroll-View组件示范</text>
+  </navigator>
+</view>
+<view class="viewName">
+  <navigator url="Component/Swiper/Swiper">
+    <text class="view-Name">Swiper组件示范</text>
+  </navigator>
+</view>
+  
+<view class="usermotto">
+    <text class="project-info">{{info}}</text>
+  </view>

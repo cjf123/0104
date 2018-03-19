@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link href="/static/css/search.css" rel="stylesheet" type="text/css">
+
+<!--评论弹出框css，目前没用到-->
+<style>
+
+    .head_box #action_nav{
+        display: inline-block;
+        height: 44px;
+        line-height: 44px;
+        margin-left: 170px;
+
+    }
+
+    .head_box #action_nav a.tb{
+        color: #c0cddf;
+        padding: 0 13px 0 11px;
+        display: inline-block;
+    }
+    .head_box #action_nav a.tb:hover{
+        color: #FFFFFF;
+        background-color: #206892;
+    }
+    .head_box #action_nav img{
+        height: 44px;
+        width: 44px;
+        border-radius: 50%;
+    }
+
+    .user-opr-box{
+        margin-top: -11px;
+        height: 124px;
+        width: 101px;
+        margin-left: 731px;
+        background-color: #ccdcef;
+    }
+    .user-opr-box a{
+        height: 25px;
+        line-height: 25px;
+        display: block;
+        margin-top: 8px;
+        text-align: center;
+    }
+    .user-opr-box a:hover{
+        background-color: #206892;
+    }
+
+    /*内容主CSS*/
+    .inner{
+        background-color: #ffffff;
+        width: 960px;
+        margin: 0 auto;
+    }
+
+
+</style>
+
+    {% block css %} {% endblock %}
+</head>
+<body>
+    <!--导航条模块-->
+    <div class="model hide" id="model"></div> <!--模态对话框外罩-->
+
+    <div class="head_box">
+        <div class="head_box_contend">
+            <a href="/search" class="logo"></a>
+            <div class="head_box_model">
+                <a href="/search" class="tb tb1">全部</a>
+                <a href="/tb2" class="tb tb2" name="42">42区</a>
+                <a href="/tb3" class="tb tb3" name="duanzi">段子</a>
+                <a href="/tb4" class="tb tb4" name="tupian">图片</a>
+                <a href="/tb5" class="tb tb5" name="aiti">挨踢1024</a>
+                <a href="/tb6" class="tb tb6" name="niwen">你问我答</a>
+            </div>
+
+            <!--搜索框区域-->
+            <div class="head_search">
+                <form action="/key" method="post">
+                    <input class="search_key" type="text" autocomplete="off" name="key">
+                    <a href="javascript:void(0)" class="search_button">
+                        <span class="button"><input type="submit" value="" style="opacity: 0;width: 20px;height: 22px"></span>
+                    </a>
+                </form>
+            </div>
+
+
+            <!--登陆注册及登陆成功后区域-->
+
+            <!--判断用户是否登陆-->
+
+            {% if request.session.is_login %}
+
+                <div id="action_nav" is-login="true" class="action-nav">
+                    <a href="javascript:;" style="float:left;position:relative;" id="btnDtaiShw" class="tb">动态
+                        <b class="notice-num-title" id="Dtai-num-title" style="right: 3px; display: none;">
+                            <em id="Dtai-em"></em>
+                        </b>
+                    </a>
+                    <a href="javascript:;" id="btnNotShw" class="notice-box tb" style="vertical-align: 18px">通知
+                        <b class="notice-num-title" id="notice-num-title" style="display: none;">
+                            <em id="notice-em"></em>
+                            <i>+</i>
+                        </b>
+                    </a>
+                    <a href="/user/link/saved/1" id="loginUserNc" class="userPro-Box tb" style="height: 44px">
+                        <img src="/static/images/13.png" id="userProImg" >
+                        <span class="u-nick" id="userProNick" style="vertical-align: 18px">{{ request.session.user_info.username}}</span>
+                        <span class="hide" id="UserProNick">{{ request.session.user_info.nid}}</span>
+                        <em id="userProArr"></em>
+                    </a>
+                </div>
+
+                <div class="user-opr-box hide" id="userOprBox">
+                <!--个人资料，通过后端传过来的ID来区分用户-->
+                    <a href="/user/{{ request.session.user_id }}" style="border-top:0;">我的榜单</a>
+{#                    <a href="http://www.chouti.com/cdu_45792645155" target="_blank" class="ie6-a">我的收藏</a>#}
+                    <a href="/banji">设置</a>
+                    <a class="logout" href="/logout">退出</a>
+                </div>
+
+
+            {% else %}
+                <div class="login_register" id="login_register">
+                    <a href="javascript:void(0)" class="login" id="login">登陆</a>
+                    <a href="javascript:void(0)" class="register" id="register">注册</a>
+                </div>
+
+            {% endif %}
+
+
+        </div>
+    </div>
+
+
+
+
+
+
+    <!--核心内容模块-->
+     <div class="pg-body" style="background-color: #eee;">
+        <div class="inner" style="width: 960px;min-height: 700px;background-color: #ffffff;margin: 0 auto;">
+            {% block body %} {% endblock %}
+        </div>
+
+    </div>
+     <!--底部模块-->
+                    <div class="pg-footer" style="background-color: #eee;">
+        <div class="inner">
+            <div class="foot-nav">
+                <div style="display:none" id="y-destjid"></div>
+                <div style="display:none" id="y-destnick"></div>
+                <a href="javascript:void(0)" target="_blank">关于我们</a>
+                <span>|</span>
+                <a href="javascript:void(0)" target="_blank">联系我们</a>
+                <span>|</span>
+                <a href="javascript:void(0)" target="_blank">服务条款</a>
+                <span>|</span>
+                <a href="javascript:void(0)" target="_blank">隐私政策</a>
+                <span>|</span>
+                <!--<a href="http://img.chouti.com/toolsffcj.html" target="_blank">浏览器插件</a><span>|</span>-->
+                <a href="javascript:void(0)" target="_blank">下载客户端</a>
+                <span>|</span>
+                <a href="javascript:void(0)" target="_blank">意见与反馈</a>
+                <span>|</span>
+                <a href="javascript:void(0)" target="_blank">友情链接</a>
+                <span>|</span>
+                <a href="http://www.shouye.com/Index.do?method=show&amp;pageId=44251&amp;jid=xinrebang@gozap.com" target="_blank">公告</a>
+                <!--<span>|</span><a href="/points/gifts" target="_blank">积分商城</a>-->
+                <a href="#" target="_blank" style="margin-left:0;vertical-align:-2px;" title="Rss订阅，Feed地址：http://dig.chouti.com/feed.xml">
+                    <img src="/static/images/ct_rss.gif" width="36" height="14"></a>
+            </div>
+            <div class="foot-nav2">
+                <a target="_blank" href="http://www.gozap.com/"><img class="foot_e" src=""></a>
+                <span class="foot_d">旗下站点</span>
+                <span class="foot_a">© 2016 chouti.com</span>
+                <a target="_blank" href="http://www.miibeian.gov.cn/" class="foot_b">京ICP备09053974号-3 京公网安备 110102004562</a>
+                <div style="margin-top:6px;">版权所有：南阳理工学院软件学院所有</div>
+            </div>
+        </div>
+    </div>
+
+    <script src="/static/js/jquery-3.1.1.js"></script>
+
+
+
+    {% block js %}
+
+    {% endblock %}
+
+
+</body>
+</html>

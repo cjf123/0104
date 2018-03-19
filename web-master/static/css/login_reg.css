@@ -1,0 +1,464 @@
+.model_login,.model_register{
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            height: 345px;
+            width: 350px;
+            margin-top: -150px;
+            margin-left: -200px;
+            z-index: 100;
+            background-color: white;
+        }
+
+        .model_top{
+            background-color: #e7ecf2;
+            height: 30px;
+        }
+        .model_top span{
+            line-height: 30px;
+            font-size: 14px;
+            color: #abb6d2;
+            margin-left: 20px;
+        }
+         .model_top a{
+             float: right;
+             font-size: 18px;
+             margin-right: 20px;
+             line-height: 30px;
+             color: #2559a4;
+         }
+         .model_top,.model_bottom a:hover{
+             color: #2559a4;
+             cursor: pointer;
+         }
+
+    .model_login_box{
+        padding: 20px 0;
+        text-align: center;
+        font-size: 14px;
+        color: #abb6d2;
+        cursor: pointer;
+    }
+    .model_login_box span{
+        margin-right: 10px;
+        color: #2559a4;
+        font-size: 14px;
+    }
+
+
+    .model_login_box .active{
+        color: #abb6d2;
+    }
+    .iphone_model_middle{
+        margin-top: -18px;
+        text-align: center;
+
+    }
+    .iphone_model_middle div{
+        margin-top: 20px;
+    }
+
+
+    .iphone_model_middle .iphone .show_code{
+        display: inline-block;
+        cursor: pointer;
+       /* width: 90px;*/
+        height: 29px;
+        line-height: 29px;
+        padding: 0px 5px;
+        background-color: #2459a2;
+        color: #FFFFFF;
+        font-size: 14px;
+        font-weight: 700;
+        margin-top: 5px;
+        border-radius: 5px;
+
+    }
+
+
+    .iphone_model_middle input{
+        width: 196px;
+        padding: 6px;
+        border: 1px solid #cddfff;
+    }
+    .iphone_model_middle img{
+        height: 29px;
+        width: 70px;
+        display: inline-block;
+        cursor: pointer;
+        vertical-align: top;
+    }
+
+    .user_model_middle{
+        margin-top: -18px;
+        text-align: center;
+    }
+    .user_model_middle img{
+        height: 29px;
+        width: 70px;
+        display: inline-block;
+        cursor: pointer;
+        vertical-align: top;
+    }
+
+    .user_model_middle div{
+        margin-top: 20px;
+    }
+    .user_model_middle input{
+        width: 196px;
+        padding: 6px;
+        border: 1px solid #cddfff;
+    }
+    #iphone_email{
+        width: 111px;
+    }
+    .iphone_model_middle select{
+        width: 210px;
+        padding: 5px 2px;
+        border: 1px solid #cddfff;
+    }
+
+    .model_bottom{
+        text-align: center;
+        margin-top: 15px;
+    }
+    .model_bottom .model_bottom_active span{
+        margin-left: 5px;
+        font-size: 12px;
+        color: #333;
+    }
+    .model_bottom .model_bottom_active a{
+       margin-left: 42px;
+    }
+    .model_bottom .model_login_bottom{
+        cursor: pointer;
+        width: 95px;
+        height: 31px;
+        background-color: #2459a2;
+        color: #FFFFFF;
+        font-size: 14px;
+        font-weight: 700;
+        margin-left: 70px;
+        margin-top: 5px;
+        border-radius: 5px;
+    }
+    .model_bottom .model_login_bottom a{
+        line-height: 31px;
+    }
+    .model_bottom .model_login_bottom a:hover{
+        color: #FFFFFF;
+    }
+
+
+
+
+     .model_register_next .user input{
+            width: 196px;
+            padding: 6px;
+            border: 1px solid #cddfff;
+            margin-left: 66px;
+        }
+
+        .model_register_next .model_register_sex{
+            margin-left: 67px;
+            margin-top: 10px;
+        }
+        .model_register_next .model_register_sex input{
+            height: 15px;
+            width: 15px;
+        }
+        .model_register_next .model_register_sex span{
+            font-size: 17px;
+        }
+
+        .model_register_next .model_register_country select {
+            width: 210px;
+            padding: 4px;
+            border: 1px solid #cddfff;
+            margin-left: 66px;
+            margin-top: 5px;
+        }
+
+        .model_register_next .model_register_city_count{
+            margin-left: 66px;
+        }
+        .model_register_next .model_register_city_count select{
+            width: 102px;
+            padding: 4px;
+            border: 1px solid #cddfff;
+            margin-top: 10px;
+        }
+
+        .model_register_next .model_register_inner_cont{
+            margin-left: 66px;
+            margin-top: 10px;
+        }
+        .model_register_next .model_register_inner_cont textarea{
+            border: 1px solid #cddfff;
+        }
+
+
+    .not-allow{
+        cursor: not-allowed !important;
+    }
+
+
+
+    /*移植*/
+
+
+.model_login .iphone_model_middle .inp .error{
+        font-size: 10px;
+        position: absolute;
+        color: #e4393c;
+        background: #FFEBEB;
+        border: 1px solid #ffbdbe;
+        z-index: 10;
+        height: 15px;
+        width: 208px;
+        line-height: 15px;
+        display: block;
+        overflow: hidden;
+        margin-left: 70px;
+    }
+    .iphone_model_middle .reg .error{
+        font-size: 10px;
+        position: absolute;
+        color: #e4393c;
+        background: #FFEBEB;
+        border: 1px solid #ffbdbe;
+        z-index: 10;
+        height: 15px;
+        width: 208px;
+        line-height: 15px;
+        display: block;
+        overflow: hidden;
+        margin-left: 70px;
+    }
+    .sending{
+        cursor: not-allowed;
+        background-color: #a3a3a1 !important
+    }
+    .sending:hover{
+        cursor: not-allowed !important;
+    }
+
+    .dianzan{
+        background-color: green;
+    }
+
+    .H_J{
+/*{#        display: none;#}*/
+/*{#        width: auto;#}*/
+/*{#        height: 21px;#}*/
+/*{#        _height: 19px;#}*/
+/*{#        padding: 0 5px;#}*/
+/*{#        line-height: 20px;#}*/
+/*{#        border: 1px solid #e7d8bd;#}*/
+/*{#        text-align: center;#}*/
+/*{#        background-color: #fbf6ee;#}*/
+/*{#        position: absolute;#}*/
+/*{#        bottom: 1px;#}*/
+/*{#        right: 1px;#}*/
+    }
+
+
+    .content-list .item {
+        clear: both;
+        padding-top: 10px;
+        border-bottom: 1px solid #dce7f4;
+        overflow: hidden;
+        position: relative;
+        margin-left: -20px;
+
+    }
+    .content-list .left_content .comments_content{
+        position: relative;
+        margin-top: -3px;
+    }
+    .content-list .left_content .comments_content .comments_content_top{
+        width: 11px;
+        height: 7px;
+        position: absolute;
+        top: -6px;
+        display: block;
+        overflow: hidden;
+        margin-left: 45px;
+    }
+
+    .comments_content .close-btn{
+        width: 10px;
+        height: 9px;
+        position: absolute;
+        top: 12px;
+        right: 12px;
+        display: block;
+        background-position: 0 -29px;
+        overflow: hidden;
+    }
+
+
+    .comments_content .comment-box{
+        border: 1px solid #cbdcee;
+        background-color: #f6f6f6;
+        padding: 12px 15px 0;
+        margin-bottom: 12px;
+        width: 534px;
+    }
+    .pinglun{
+        background: url(/static/images/pinglun.png?v=2.7) no-repeat 0 0;
+    }
+    .loading-ico-top {
+        background: url(/static/images/pinglun_loading.gif?v=2.7) no-repeat 0 7px;
+        padding-left: 23px;
+        color: #369;
+        margin-right: 0;
+        margin-top: -5px;
+        cursor: default;
+    }
+
+    .comments_content .comment_title_box{
+        padding-bottom: 10px;
+        background: url(/static/images/cent_secant_4_1.gif) repeat-x 0 bottom;
+        overflow: hidden;
+        clear: both;
+    }
+    .comments_content .comment_title_box .comment_hot{
+        float: left;
+        font-weight: 700;
+        font-size: 12px;
+        color: #b4b4b4;
+    }
+    .comments_content .comment_title_box .comment_remove{
+        float: left;
+        margin-left: 25px;
+    }
+    .comments_content .comment_title_box .comment_remove a{
+        color: #99aecb;
+    }
+
+    .comments_content .comment_title_box .comment_remove .em{
+        background-position: 0 -7px;
+        width: 11px;
+        height: 11px;
+        display: inline-block;
+        margin-right: 3px;
+        overflow: hidden;
+    }
+
+    .comments_content .comment_title_box .comment_inner_arrow{
+        padding: 0;
+        margin: 0;
+        list-style: none;
+    }
+    .comment_title_box .comment_huifu{
+        overflow: hidden;
+        clear: both;
+        margin-top: 8px;
+    }
+    .comment_title_box .comment_huifu .huifu_inner{
+        float: left;
+        position: relative;
+        background-color: #e6ecf3;
+        padding: 5px;
+    }
+    .comment_title_box .shouqi{
+        color: #99aecb;
+        display: inline-block;
+        margin-left: 480px;
+    }
+    .shouqi a{
+        color: #99aecb;
+    }
+    .comment_title_box .shouqi .em2{
+        background-position: 0 -18px;
+        vertical-align: -1px;
+        width: 11px;
+        height: 11px;
+        display: inline-block;
+        margin-right: 3px;
+        overflow: hidden;
+    }
+
+    .comment_title_box .button{
+        color: #f60;
+        display: block;
+        height: 8px;
+    }
+
+    .comment_title_box .button .button_inner{
+        margin-right: 0;
+        line-height: 20px;
+        height: 25px;
+        display: none;
+    }
+
+
+    .comment_huifu .huifu_inner .huifu_text{
+        text-indent: 0px;
+        height: 25px;
+        resize: vertical;
+        border: 1px solid rgb(204, 220, 239);
+        font-size: 12px;
+        width: 440px;
+        min-height: 20px;
+        padding: 4px 2px 0;
+        line-height: 18px;
+        overflow: auto;
+        outline: none;
+    }
+    .comment_huifu .huifu_btn .fabu_btn{
+        background: url(/static/images/bottom.png) no-repeat 0 0;
+        background-position: 0 -66px;
+        padding: 9px 22px;
+        margin-left: 15px;
+        height: 31px;
+        line-height: 31px;
+        color: #fff;
+        font-size: 14px;
+        font-weight: 700;
+    }
+    /*评论的距离*/
+    .comment_inner_arrow li{
+        padding: 0 0 0 16px;
+    }
+    .item{
+        clear: both;
+        padding-bottom: 8px;
+        padding-top: 8px;
+        overflow: hidden;
+        position: relative;
+        background: url(/static/images/cent_secant_4_1.gif) repeat-x 0 bottom!important;
+    }
+    .item-inner{
+        margin-left: 20px;
+    }
+    .item span{
+        font-size: 12px;
+        font-weight: 400;
+        font-family: 微软雅黑;
+        color: #b4b4b4;
+    }
+
+    .item-inner .huifu_p{
+        margin-left: 50px;
+        border: 1px solid #d4d4d4;
+        padding: 2px 5px;
+        background-color: whitesmoke;
+    }
+    .item-inner .huifu_p:hover{
+        cursor: pointer;
+        background-color: wheat;
+        color: black;
+    }
+
+    .content-list .item .p_user{
+/*{#        margin-right: 15px;#}*/
+/*{#        color: #0488cd;#}*/
+/*{#        font-size: 14px;#}*/
+        font-family: cursive;
+        margin-right: 15px;
+/*{#        color: rgb(255,166,255);#}*/
+        color: #336699;
+        font-size: 14px;
+    }

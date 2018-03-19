@@ -1,0 +1,27 @@
+/**app.wxss**/
+/**更多源码请于51小程序源码版块下载：http://bbs.html51.com/f-36-1/**/
+page {
+  background-color: #fbf9fe;
+  height: 100%;
+}
+/**在这里可以把整个小程序所有页面用到的公共样式放在这里，便于每个页面直接调用**/
+.viewTitle{
+    margin-top: 20px;
+    height: 40px;
+    text-align: center;
+}
+.bc_green{
+    background-color: #09BB07;
+}
+.bc_red{
+    background-color: #F76260;
+}
+.bc_blue{
+    background-color: #10AEFF;
+}
+.bc_yellow{
+    background-color: #FFBE00;
+}
+.bc_gray{
+    background-color: #C9C9C9;
+}

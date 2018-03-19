@@ -1,0 +1,18 @@
+/**ScrollView.wxss**/
+/**更多源码请于51小程序源码版块下载：http://bbs.html51.com/f-36-1/**/
+.scroll-view_H{
+  white-space: nowrap;
+}
+.scroll-view-item{
+  height: 200px;
+}
+.scroll-view-item_H{
+  display: inline-block;
+  width: 100%;
+  height: 200px;
+}
+.flex-wrp{
+    height: 200px;
+    display: flex;
+    background-color: #ffffff;
+}
